@@ -19,3 +19,15 @@ SELECT * FROM Products WHERE UnitPrice >= 50 AND UnitPrice<=100;
 SELECT * FROM Customers WHERE Country IN ('Brazil','Argentina','Mexico');
 SELECT * FROM Employees WHERE FirstName LIKE 'N%';
 SELECT * FROM Customers WHERE CompanyName LIKE 'A%';
+
+SELECT FirstName, LastName FROM Employees WHERE FirstName LIKE '%an%';
+
+SELECT ProductID,ProductName,UnitPrice
+FROM Products
+ORDER BY UnitPrice
+
+Select top 10 ProductName, UnitPrice, UnitsInStock FROM Products ORDER by UnitsInStock desc
+
+SELECT CategoryID, ProductName, UnitPrice
+FROM Products
+ORDER BY CategoryID ASC , UnitPrice DESC
