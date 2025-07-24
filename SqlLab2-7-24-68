@@ -1,0 +1,50 @@
+SELECT ProductID, ProductName, UnitPrice, UnitsInStock, UnitPrice*UnitsInStock as StockValue from Products;
+
+SELECT ProductID as รหัส, ProductName as สินค้า,UnitsInStock * UnitsOnOrder as จำนวนสินค้าคงเหลือ, ReorderLevel as StockValue from Products
+where (UnitsInStock+UnitsOnOrder) < ReorderLevel;
+
+SELECT ProductID, ProductName, UnitPrice, ROUND(UnitPrice * 0.07,2) as [vat 7%] from Products;
+
+SELECT EmployeeID, TitleOfCourtesy+  FirstName+' '+ LastName as [Employee Name] from Employees;
+
+SELECT OrderID, ProductID, UnitPrice, Quantity, Discount, (UnitPrice*Quantity)-(UnitPrice*Quantity*Discount) as NetPrice, (UnitPrice*Quantity)-((UnitPrice*Quantity)-(UnitPrice*Quantity*Discount)) as ส่วนลดทั้งหมด from [Order Details]; 
+
+SELECT EmployeeID, FirstName, BirthDate, datediff(Year,BirthDate,'2024-12-31') age, HireDate, datediff(year,HireDate,getdate()) yearInOffice from Employees;
+
+SELECT count(*)as จำนวนสินค้า from Products where UnitsInStock < 15;
+
+SELECT count(*) from Customers where Country = 'USA';
+ 
+SELECT count(*) from Employees where City = 'London';
+
+SELECT count(*) from Orders where year(OrderDate)=1997;
+
+SELECT count(*) from [Order Details] where ProductID = 1;
+
+SELECT sum(Quantity) from [Order Details] where ProductID = 2;
+
+SELECT sum(UnitPrice*UnitsInStock) from Products;
+
+SELECT sum(UnitsOnOrder) from Products where CategoryID = 8;
+
+SELECT max(UnitPrice) as Max, min(UnitPrice) as Min from [Order Details] where ProductID = 1;
+
+SELECT AVG(UnitPrice) as Average, max(UnitPrice) as Max, min(UnitPrice) as Min from [Order Details] where ProductID = 5;
+
+SELECT Country , COUNT(*) as [Num of Country] FROM Customers GROUP BY Country;
+
+SELECT CategoryID, AVG(UnitPrice),  min(UnitPrice),  max(UnitPrice) from Products GROUP BY CategoryID;
+
+SELECT OrderID, COUNT(*) from [Order Details] GROUP BY OrderID HAVING COUNT(*) > 3;
+
+SELECT ShipCountry, COUNT(*) from Orders GROUP BY ShipCountry HAVING COUNT(*) >= 100;
+
+SELECT Country , COUNT(*) as "Num of Country" FROM Customers GROUP BY Country HAVING COUNT(*) < 5;
+
+SELECT OrderID, sum(UnitPrice*Quantity*(1-Discount)) from [Order Details] GROUP by OrderID HAVING sum(UnitPrice*Quantity*(1-Discount)) < 100;
+
+SELECT ShipCountry, COUNT(*) as numOfOrder from Orders where year(orderdate) = 1997 GROUP BY ShipCountry HAVING COUNT(*) < 20 ORDER BY COUNT(*) desc;
+
+SELECT top 1 OrderID, sum(UnitPrice*Quantity*(1-Discount)) as total from [Order Details] GROUP by OrderID ORDER BY total desc;
+
+SELECT top 5 OrderID, sum(UnitPrice*Quantity*(1-Discount)) as total from [Order Details] GROUP by OrderID ORDER BY total;
