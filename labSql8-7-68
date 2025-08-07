@@ -2,3 +2,9 @@
 Select * From Products WHERE UnitPrice = 15;
 --2
 Select * From Products WHERE UnitsInStock >= 250;
+--3
+Select productID, ProductName From Products WHERE Discontinued = 0;
+--4
+Select productID, ProductName, UnitPrice From Products WHERE UnitPrice >= 100;
+--5
+Select productID, UnitPrice From Products WHERE ProductName = 'ยางลบ' OR productID = '2';
