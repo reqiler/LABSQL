@@ -1,1 +1,4 @@
-
+--1
+Select * From Products WHERE UnitPrice = 15;
+--2
+Select * From Products WHERE UnitsInStock >= 250;
