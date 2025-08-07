@@ -3,8 +3,29 @@ Select * From Products WHERE UnitPrice = 15;
 --2
 Select * From Products WHERE UnitsInStock >= 250;
 --3
-Select productID, ProductName From Products WHERE Discontinued = 0;
+Select productID, ProductName From Products WHERE Discontinued = 1;
 --4
-Select productID, ProductName, UnitPrice From Products WHERE UnitPrice >= 100;
+Select productID, ProductName, UnitPrice From Products WHERE UnitPrice > 100;
 --5
 Select productID, UnitPrice From Products WHERE ProductName = 'ยางลบ' OR productID = '2';
+--6
+Select ReceiptID, ReceiptDate, TotalCash From Receipts WHERE ReceiptDate < '2013-02-15';
+--7
+Select productID, ProductName From Products WHERE UnitsInStock >= 400;
+--8
+Select productID, ProductName, UnitPrice, UnitsInStock From Products 
+WHERE ProductName in ('แชมพู', 'แป้งเด็ก', 'ดินสอ', 'ยางลบ')
+--9
+Select [Description]  From Categories WHERE CategoryName = 'เครื่องเขียน';
+--10
+Select [Description]  From Categories WHERE CategoryName = 'เครื่องสำอาง';
+--11
+Select * From Employees WHERE [Position] = 'Sale Representative';
+--12
+Select Title + FirstName + LastName as EmpName, UserName, [Password] From Employees;
+--13
+Select UserName, [Password] From Employees WHERE FirstName = 'ก้องนิรันดร์';
+--14
+Select EmployeeID From Receipts WHERE ReceiptID = 3;
+--15
+Select productID, ProductName, UnitPrice From Products WHERE CategoryID in (2,4);
