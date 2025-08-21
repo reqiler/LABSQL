@@ -24,3 +24,13 @@ SELECT CompanyName, OrderID
 FROM Orders JOIN Shippers
 ON Shippers.ShipperID=Orders.Shipvia
 WHERE OrderID=10275
+
+--
+SELECT Products.ProductID, Products.ProductName, Suppliers.CompanyName, Suppliers.Country FROM Products JOIN Suppliers ON Products.SupplierID=Suppliers.SupplierID
+WHERE Country in ('usa', 'uk')
+
+--
+SELECT e.EmployeeID, FirstName, o.OrderID FROM Employees as e JOIN Orders as o ON e.EmployeeID=o.EmployeeID 
+order by EmployeeID
+
+--
