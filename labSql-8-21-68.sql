@@ -75,3 +75,9 @@ SELECT distinct p.ProductID, p.ProductName, sum(Quantity) as จำนวนท�
                             JOIN Products p ON od.ProductID=p.ProductID
 WHERE c.CompanyName = 'Around the Horn'
 GROUP BY p.ProductID, p.ProductName ORDER BY 3 desc
+
+--
+SELECT o.OrderID, e.TitleOfCourtesy+FirstName+' '+LastName as Emp_Name, ROUND(sum(od.Quantity * od.UnitPrice *(1-Discount)),2) as TotalCash
+FROM Orders o JOIN Employees e ON o.EmployeeID=e.EmployeeID
+                            JOIN [Order Details] od ON o.OrderID=od.OrderID
+GROUP BY o.OrderID, e.TitleOfCourtesy+FirstName+' '+LastName
