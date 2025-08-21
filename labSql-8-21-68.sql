@@ -61,3 +61,17 @@ FROM Employees as e JOIN Orders as o on e.EmployeeID=o.EmployeeID
                     JOIN Products as p on p.ProductID=od.ProductID
 WHERE e.FirstName = 'Nancy'
 order by ProductID
+
+--
+SELECT distinct s.Country FROM Customers c JOIN Orders o ON c.CustomerID=o.CustomerID
+                            JOIN [Order Details] od ON o.OrderID=od.OrderID
+                            JOIN Products p ON od.ProductID=p.ProductID
+                            JOIN Suppliers s on p.SupplierID=s.SupplierID
+WHERE c.CompanyName = 'Around the Horn'
+
+--
+SELECT distinct p.ProductID, p.ProductName, sum(Quantity) as จำนวนที่ซื้อ FROM Customers c JOIN Orders o ON c.CustomerID=o.CustomerID
+                            JOIN [Order Details] od ON o.OrderID=od.OrderID
+                            JOIN Products p ON od.ProductID=p.ProductID
+WHERE c.CompanyName = 'Around the Horn'
+GROUP BY p.ProductID, p.ProductName ORDER BY 3 desc
