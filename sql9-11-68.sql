@@ -36,6 +36,9 @@ VALUES('A0001', 'บริษัทซื้อเยอะจำกัด')
 --11
 SELECT * FROM Employees
 
+SELECT Emp.EmployeeID, Emp.FirstName AS 'ชื่อพนักงาน', Boss.EmployeeID, Boss.FirstName AS 'ชื่อหัวหน้า' 
+FROM Employees AS Emp LEFT OUTER JOIN Employees AS Boss ON Emp.ReportsTo = Boss.EmployeeID
+
 INSERT INTO Employees(FirstName, LastName)
 VALUES('Suteerapat', 'Kansomprot')
 
@@ -61,5 +64,4 @@ UPDATE Customers SET City = 'Udonthani', Country = 'Thailand' WHERE CustomerID =
 --16
 DELETE FROM Products WHERE ProductID = 78
 
-DELETE FROM Shippers WHERE ShipperID = 6
-
+DELETE FROM Shippers WHERE ShipperID = 6         
